@@ -1,5 +1,6 @@
-package br.com.ferrosul.apibanco;
+package br.com.ferrosul.api.banco;
 
+import br.com.ferrosul.api.banco.jdbc.Conexao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,9 @@ public class ApiBancoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiBancoApplication.class, args);
+		Conexao conn = new Conexao();
+		conn.testeDb();
 	}
+
 
 }
