@@ -9,8 +9,6 @@ public class ApiBancoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiBancoApplication.class, args);
-		Conexao conn = new Conexao();
-		conn.testeDb();
 	}
 
 

@@ -1,23 +1,23 @@
 package br.com.ferrosul.api.banco.jdbc;
-import java.sql.Connection;
-import java.sql.SQLClientInfoException;
-import java.sql.SQLException;
-import java.sql.Statement;
+import org.sqlite.SQLiteDataSource;
+
+import java.sql.*;
 
 
 public class Conexao {
 
-        public static SQLiteJDBCDriverConnection jdbc = new SQLiteJDBCDriverConnection("/dataBase/ferrosul.db");
-        public static final Connection conexao = jdbc.connect();
+        public Connection getConnection(){
 
-
-        public void testeDb(){
-                try{
-                        Statement statement = conexao.createStatement();
-                        System.out.println(statement.execute(".tables"));
-                }catch (SQLException e){
-                        System.out.println("Erro de conexão:" + e);
+                try {
+                        Class.forName("org.sqlite.JDBC");
+                        String dbURL = "jdbc:sqlite:/home/dieison/Documents/Projetos/ferrosul/api-banco/src/main/resources/dataBase/ferrosul.db";
+                        Connection conn = DriverManager.getConnection(dbURL);
+                        return  conn;
+                } catch (ClassNotFoundException | SQLException ex) {
+                        ex.printStackTrace();
+                        return null;
                 }
+
         }
 
 
